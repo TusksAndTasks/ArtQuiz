@@ -44,7 +44,7 @@ async function insertArtistCategories(){
 async function createPaintingsList(){
     try{
           for (let categoryNumber in paintingCategory){
-            innerList = innerList + `<a href="#paintingsPack${+categoryNumber + 1}"><div class="category">
+            innerList = innerList + `<a href="#paintingsPack-${+categoryNumber + 1}"><div class="category">
             <div class="category-title">${paintingCategory[categoryNumber].title}</div>
             <img src="${paintingCategory[categoryNumber].source}" alt="first-picture" width="220" height="220">
             </div></a>`
@@ -62,7 +62,7 @@ async function createPaintingsList(){
 async function createArtistsList(){
     try{
           for (let artistNumber in artistCategory){
-            innerList = innerList + `<a href="#artistsPack${+artistNumber + 1}"><div class="category">
+            innerList = innerList + `<a href="#artistsPack-${+artistNumber + 1}"><div class="category">
             <div class="category-title">${artistCategory[artistNumber].title}</div>
             <img src="${artistCategory[artistNumber].source}" alt="first-picture" width="220" height="220">
             </div></a>`

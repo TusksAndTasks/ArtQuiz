@@ -1,23 +1,45 @@
 import category from "./category.js";
+import { QuizConstructor } from "./painting-question.js";
 const categoryLayout = new category();
+const quizConstructor = new QuizConstructor();
 
-
-function getRoute(){
-    const hash = location.hash ? location.hash.slice(1) : '';
-    return hash
+function isQuizView(num){
+  const categoryNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+  let indicator = categoryNumbers.find(element => element === num[num.length - 1]);
+  return indicator ? true : false;
 }
 
 
-function changeRoute() {
-   const route = getRoute(); 
+function getRoute(){
+    let hash = location.hash ? location.hash.slice(1) : '';
+    let numberOfPack = 0;
+    let hashOfPack = '';
+    let check = isQuizView(hash);
 
-    switchView(route);
+    hashOfPack = hash;
+
+    if(check){
+      hashOfPack = hash.split('-')[0];
+      numberOfPack = hash.split('-')[1];
+    }
+    
+
+    return [hashOfPack, numberOfPack]
+}
+
+
+
+function changeRoute() {
+   const route = getRoute()[0]; 
+   const packNumber = getRoute()[1];
+
+    switchView(route, packNumber);
 }
 
 const header = document.querySelector('header');
 const main = document.querySelector('main');
 
-function switchView(location) {
+function switchView(location, number) {
 
     switch(location){
         case '':
@@ -63,7 +85,32 @@ function switchView(location) {
             </div>
             `
             categoryLayout.artists();
-            break    
+            break
+        case 'paintingsPack':
+          header.innerHTML = `
+          <nav class = "quiz-header">
+          <a href=''>
+          <div class="main-button">Home</div>
+          </a>
+          <a href='#paintings'>
+          <div class="category-button">Categories</div>
+          </a>
+          </nav>
+          `
+          main.innerHTML = `
+          <div class="question-container">
+          <div class="question">
+          </div>
+          <div class="answer-box">
+          <div class="answer"></div>
+          <div class="answer"></div>
+          <div class="answer"></div>
+          <div class="answer"></div>
+          </div>
+          </div>
+          `
+          quizConstructor.createQuestion(number);
+          break        
     }
 
 }
@@ -80,7 +127,7 @@ export default class {
   }
 
   route(){
-     const route = getRoute();
+     const route = getRoute()[0];
      return route;
   }
 }

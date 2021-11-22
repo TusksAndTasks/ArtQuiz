@@ -108,6 +108,43 @@ function switchView(location, number) {
           <div class="answer"></div>
           </div>
           </div>
+          <div class="bullet-container">
+          <div class="bullet"></div>
+          <div class="bullet"></div>
+          <div class="bullet"></div>
+          <div class="bullet"></div>
+          <div class="bullet"></div>
+          <div class="bullet"></div>
+          <div class="bullet"></div>
+          <div class="bullet"></div>
+          <div class="bullet"></div>
+          <div class="bullet"></div>
+        </div>
+          <section class="popup-screen">
+          <div class="popup-container">
+          <div class="result"></div>
+          <div class='right-picture'></div>
+          <p class="picture-name"></p>
+          <p class="picture-author"></p>
+          <p class="picture-year"></p>
+          <button class="next-question">continue</button>
+          </div>
+          </section>
+          <section class="popup-score">
+          <div class="popup-container">
+          <div class="congrats">Congratulations!</div>
+          <div class="score"><span></span>/10</div>
+          <div class="score-picture"></div>
+          <div class="result-nav">
+          <a href=''>
+          <div class="main-button">Home</div>
+          </a>
+          <a href='#paintings'>
+          <div class="category-button">Continue</div>
+          </a>
+          </div>
+          </div>
+          </section>
           `
           quizConstructor.createQuestion(number);
           break        

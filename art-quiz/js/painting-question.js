@@ -9,6 +9,148 @@ function declareAnswers(){
     }
 }
 
+
+function declareScorePopup(){
+    const scorePopup = document.querySelector('.popup-score');
+    return scorePopup;
+}
+
+
+function declarePopup(){
+  
+        const popup = document.querySelector('.popup-screen');
+        return popup;
+    
+}
+
+function declareBullets(){
+    const bullets = document.querySelectorAll('.bullet');
+    return bullets;
+}
+
+function declarePopupProperties(){
+    const result = document.querySelector('.result');
+    const rightPicture = document.querySelector('.right-picture');
+    const pictureName = document.querySelector('.picture-name');
+    const author = document.querySelector('.picture-author');
+    const year = document.querySelector('.picture-year');
+    
+    return [result, rightPicture, pictureName, author, year];
+}
+
+function insertResults(number, result){
+   const properties = declarePopupProperties();
+   console.log(properties[0])
+   if (result === true){
+   properties[0].style.backgroundImage = `url(./assets/svg/Right.svg)`;
+   } else{
+   properties[0].style.backgroundImage = `url(./assets/svg/Wrong.svg)`;
+   }
+   properties[1].style.backgroundImage = `url(./img/${number}.jpg)`;
+   properties[2].textContent = images[number].name;
+   properties[3].textContent = images[number].author;
+   properties[4].textContent = images[number].year;
+}
+
+function declareNextButton(){
+    const nextButton = document.querySelector('.next-question')
+    return nextButton;
+}
+
+
+function showPopUp(number, secondNumber, result){
+    let popup = declarePopup();
+    let nextButton = declareNextButton();
+    let bullets = declareBullets();
+    changeBullet(result, bullets);
+    nextButton.addEventListener('click', function(){changeQuizView(number)});
+    insertResults(secondNumber, result);
+    popup.classList.add('active');
+
+}
+
+function hidePopUp(){
+    let popup = declarePopup();
+    popup.classList.remove('active');
+}
+
+function showScorePopup(number){
+    let score = declareScorePopup();
+    document.querySelector('.score span').textContent = number;
+    score.classList.add('active');
+}
+
+
+function changeQuizView(number){
+    if(clickNumber === 10){
+       let score = setScore();
+       showScorePopup(score);
+    } else{
+    changeQuestion(number);
+    insertAnswers(number);
+    hidePopUp();
+    }
+}
+
+function setScore(){
+    let pageNum = location.hash.split('-')[1];
+    let score = countScore();
+    localStorage.setItem(`pictures-${pageNum}`, score);
+    return score;
+}
+
+
+function isCorrect(element, number){
+    let answerClicked = element.style.backgroundImage;
+    let correctAnswer = `url("./img/${number}.jpg")`;
+    
+    if (answerClicked === correctAnswer){
+        console.log(true);
+        localStorage.setItem(`${number}`, true);
+        return true;
+    } else {
+        console.log(false);
+        localStorage.setItem(`${number}`, false);
+        return false;
+    }
+}
+
+
+function changeBullet(result, elements){
+    if(result === true){
+      elements[clickNumber - 1].style.backgroundColor = 'green'
+    } else{
+      elements[clickNumber - 1].style.backgroundColor = 'red'
+    }
+}
+
+
+function countScore(){
+    let bullets = declareBullets();
+    let score = 0;
+    bullets.forEach(function(bullet){
+        if (bullet.style.backgroundColor === 'green'){
+           score++;  
+        }
+    })
+    return score;
+}
+
+function setListeners(number){
+   const answers = declareAnswers();
+   answers.forEach(function(answer){
+       answer.addEventListener('click', function(){
+           let nextNum = secondTracker(number);
+           let currentNum = nextNum - 1;
+           let result = isCorrect(answer, currentNum);
+           showPopUp(nextNum, currentNum, result);
+       })
+   }
+   )
+
+}
+
+
 function declareQuestion(){
     if(document.querySelector('.question')){
         const question = document.querySelector('.question');
@@ -18,6 +160,21 @@ function declareQuestion(){
 }
 
 //tracker
+
+let clickNumber = 0;
+
+
+function secondTracker(number){
+    if(clickNumber <= 10){
+    clickNumber++
+    console.log(clickNumber)
+    } else{
+        clickNumber = 0;
+    }
+    let currentNumber = number + clickNumber;
+    console.log(currentNumber)
+    return currentNumber;
+}
 
 
 function trackerInit(number){
@@ -115,6 +272,7 @@ export class QuizConstructor{
         let initNum = trackerInit(number)
         changeQuestion(initNum);
         insertAnswers(initNum);
+        setListeners(initNum);
        }
 
     

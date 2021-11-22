@@ -20,6 +20,7 @@ async function insertPaintingCategories(){
                   <a href='#score'><button class="score-button">Score</button></a>
                 </nav>
                 <div class="category-list">`
+                insertPaintingScore()
 } catch (err) {
     throw err
 }
@@ -44,10 +45,18 @@ async function insertArtistCategories(){
 async function createPaintingsList(){
     try{
           for (let categoryNumber in paintingCategory){
-            innerList = innerList + `<a href="#paintingsPack-${+categoryNumber + 1}"><div class="category">
+            innerList = innerList + `<div class="category"><a href="#paintingsPack-${+categoryNumber + 1}">
             <div class="category-title">${paintingCategory[categoryNumber].title}</div>
             <img src="${paintingCategory[categoryNumber].source}" alt="first-picture" width="220" height="220">
-            </div></a>`
+            </a>
+            <a href="#paintingScore-${+categoryNumber + 1}">
+            <div class="category-score">Score <span class="current-score"></span> </div>
+            </a></div>
+            `
+
+           // if(localStorage.getItem(`pictures-${+categoryNumber + 1}`)){
+              //insertPaintingScore(+categoryNumber)
+            //}
           }
           innerList = innerList + ` </div>
           </div>`
@@ -76,7 +85,13 @@ async function createArtistsList(){
     }
 }
 
-
+function insertPaintingScore(){
+    for(let i = 0; i <= 11; i++){
+      if(localStorage.getItem(`pictures-${i + 1}`)){
+    document.querySelectorAll('.current-score')[i].textContent = localStorage.getItem(`pictures-${i + 1}`)
+      }
+    }
+  }
 
 export default class {
     constructor(){

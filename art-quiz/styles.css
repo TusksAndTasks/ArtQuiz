@@ -7,9 +7,6 @@ a {
 
 }
 
-main{
-    overflow: hidden;
-}
 
 button{
     border: none;
@@ -126,13 +123,13 @@ button{
     display: flex;
     justify-content: space-between;
     height: auto;
-    gap: 20px 30px;
+    gap: 40px 30px;
     flex-flow: row wrap;  
 }
 
 .category{
   width: 220px;
-  height: 300px;
+  height: 380px;
   
 }
 
@@ -213,4 +210,139 @@ button{
     content: "";
     display: block;
     padding-top: 100%; 
+}
+
+.popup-screen{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    display: none;
+}
+
+.popup-score{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    display: none;
+}
+
+.popup-container{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 60%;
+    margin-top: 20vh;
+    height: 70vh;
+    background-color: white;
+    margin-left: 20%;
+}
+
+
+.result{
+    width: 5%;
+    height: 5%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.right-picture{
+    width: 40%;
+    height: 40vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.popup-container p{
+    font-family: Montserrat;
+    font-size: 20px; 
+    font-weight: 300;
+}
+
+.next-question{
+    width: 152px;
+    height: auto;
+    background-color: #660033;
+    color: rgba(217, 249, 253, 0.75);
+    text-transform: uppercase;
+    font-family: Montserrat;
+    font-size: 23px;
+    text-align: center;
+    cursor: pointer;
+    padding: 15px 5px;
+    margin-bottom: 10px;
+}
+
+.active{
+    display: block;
+}
+
+.bullet-container{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 30%;
+}
+
+.bullet{
+    width: 20px;
+    height: 20px;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
+.result-nav{
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+
+.result-nav .category-button{
+    text-align: center;
+}
+
+.congrats{
+    text-transform: uppercase;
+    font-family: Montserrat;
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.score{
+    text-transform: uppercase;
+    font-family: Montserrat;
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.score-picture{
+    width: 40%;
+    height: 172px;
+    background-position: center;
+    background-image: url('./assets/svg/Congrats.svg');
+    background-repeat: no-repeat;
+}
+
+.category-score{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 220px;
+    height: 60px;
+    background-color: #587b76;;
+    margin-top: -5px ;
+    color: white;
+    font-family: Montserrat;
+    font-size: 28px;
+    border-radius: 0 0 35px 0;
 }

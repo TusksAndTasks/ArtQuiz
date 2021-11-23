@@ -21,7 +21,7 @@ button{
     display: flex;
     flex-flow: column;
     align-items: center;
-    width: 1920px;
+    width: 100%;
 }
 
 .change-type {
@@ -459,4 +459,27 @@ button{
     font-family: Montserrat;
     font-size: 20px;
     font-weight: 600;
+}
+
+footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    margin-left: 20%;
+}
+
+footer div a{
+    color: black;
+}
+
+footer div{
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+footer div:nth-child(2){
+    margin-right: 40px;
+
 }

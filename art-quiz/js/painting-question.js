@@ -40,7 +40,6 @@ function declarePopupProperties(){
 
 function insertResults(number, result){
    const properties = declarePopupProperties();
-   console.log(properties[0])
    if (result === true){
    properties[0].style.backgroundImage = `url(./assets/svg/Right.svg)`;
    } else{
@@ -104,11 +103,9 @@ function isCorrect(element, number){
     let correctAnswer = `url("./img/${number}.jpg")`;
     
     if (answerClicked === correctAnswer){
-        console.log(true);
         localStorage.setItem(`${number}`, true);
         return true;
     } else {
-        console.log(false);
         localStorage.setItem(`${number}`, false);
         return false;
     }

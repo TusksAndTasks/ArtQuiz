@@ -1,9 +1,12 @@
 import category from "./category.js";
 import { QuizConstructor } from "./painting-question.js";
 import { ArtistQuizConstructor } from "./artist-question.js";
+import score from "./score.js";
+
 const categoryLayout = new category();
 const quizConstructor = new QuizConstructor();
 const artistQuizConstructor = new ArtistQuizConstructor();
+const newScore = new score();
 
 function isQuizView(num){
   const categoryNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
@@ -67,7 +70,7 @@ function switchView(location, number) {
                 </div>
               </a>
             </div>  
-            <button class="settings">settings</button>
+         <button class="settings"><a href="#settings">settings</a></button>
           </div>
             `;
             break
@@ -213,6 +216,66 @@ function switchView(location, number) {
         </section>
         `
         artistQuizConstructor.createQuestion(number);
+        break;
+      case 'paintingScore': 
+        header.innerHTML = `<nav class = "quiz-header">
+        <a href=''>
+        <div class="main-button">Home</div>
+        </a>
+        <a href='#paintings'>
+        <div class="category-button">Categories</div>
+        </a>
+        </nav>`
+        main.innerHTML = ` <div class="score-container">
+        </div>
+        <div class="score-nav">
+        <a href="#paintingScore-${+number - 1}"><div class="prev-score"></div></a>
+          <div class="score-tracker">Paintings - ${number}/12</div>
+          <a href="#paintingScore-${+number + 1}"><div class="next-score"></div></a>
+        </div>
+        <section class="info-popup">
+        <div class="info-content">
+        <p class="info-name"></p>
+        <p class="info-author"></p>
+        <p class="info-year"></p>
+        <div class="next-question">Continue</div>
+      </div>
+      </section>`
+        newScore.createScore(location, number);
+        newScore.hideButtons(number);
+        break;
+      case 'artistScore':
+        header.innerHTML = `<nav class = "quiz-header">
+        <a href=''>
+        <div class="main-button">Home</div>
+        </a>
+        <a href='#artists'>
+        <div class="category-button">Categories</div>
+        </a>
+        </nav>`
+        main.innerHTML = ` <div class="score-container">
+        </div>
+        <div class="score-nav">
+          <a href="#artistScore-${+number - 1}"><div class="prev-score"></div></a>
+          <div class="score-tracker">Artists - ${+number}/12</div>
+          <a href="#artistScore-${+number + 1}"><div class="next-score"></div></a>
+        </div>
+        <section class="info-popup">
+        <div class="info-content">
+        <p class="info-name"></p>
+        <p class="info-author"></p>
+        <p class="info-year"></p>
+        <div class="next-question">Continue</div>
+      </div>
+      </section>`
+        newScore.createScore(location, number);
+        newScore.hideButtons(number);
+        break;
+      case 'settings':
+        main.innerHTML = `<a href=''>
+        <div class="main-button">Home</div>
+        </a>
+        <div class='congrats'>Work in progress...</div>`  
         break;
     }
 

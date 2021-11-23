@@ -51,7 +51,6 @@ function declarePopupProperties(){
 
 function insertResults(number, result){
     const properties = declarePopupProperties();
-    console.log(properties[0])
     if (result === true){
     properties[0].style.backgroundImage = `url(./assets/svg/Right.svg)`;
     } else{
@@ -64,10 +63,15 @@ function insertResults(number, result){
  }
 
 function changeBullet(result, elements){
+    let currentNum = clickNumber;
+
+    if(currentNum === 0){
+        currentNum = 1;
+    }
     if(result === true){
-      elements[clickNumber - 1].style.backgroundColor = 'green'
+      elements[currentNum - 1].style.backgroundColor = 'green'
     } else{
-      elements[clickNumber - 1].style.backgroundColor = 'red'
+      elements[currentNum - 1].style.backgroundColor = 'red'
     }
 }
 
@@ -108,7 +112,7 @@ let clickNumber = 0;
 
 
 function secondTracker(number){
-    if(clickNumber <= 10){
+    if(clickNumber < 10){
     clickNumber++
     } else{
         clickNumber = 0;
@@ -197,11 +201,10 @@ async function insertRightAnswer(number){
     let correctAnswer = images[number].author;
     
     if (answerClicked === correctAnswer){
-        console.log(true);
         localStorage.setItem(`${number}`, true);
+
         return true;
     } else {
-        console.log(false);
         localStorage.setItem(`${number}`, false);
         return false;
     }

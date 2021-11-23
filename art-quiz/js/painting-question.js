@@ -116,10 +116,15 @@ function isCorrect(element, number){
 
 
 function changeBullet(result, elements){
+    let currentNum = clickNumber;
+    if(currentNum === 0){
+        currentNum = 1;
+    }
+
     if(result === true){
-      elements[clickNumber - 1].style.backgroundColor = 'green'
+      elements[currentNum - 1].style.backgroundColor = 'green'
     } else{
-      elements[clickNumber - 1].style.backgroundColor = 'red'
+      elements[currentNum - 1].style.backgroundColor = 'red'
     }
 }
 
@@ -164,7 +169,7 @@ let clickNumber = 0;
 
 
 function secondTracker(number){
-    if(clickNumber <= 10){
+    if(clickNumber < 10){
     clickNumber++
     } else{
         clickNumber = 0;

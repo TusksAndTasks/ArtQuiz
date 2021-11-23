@@ -3,10 +3,17 @@ import { artistCategory } from './artist-category.js';
 
 
 const categoryList = document.querySelector('main');
-let innerList = ` <div class="container-category">
+let innerListPainting = ` <div class="container-category">
 <nav class = "category-nav">
   <a href=''><button class="main-button">Home</button></a>
-  <a href='#score'><button class="score-button">Score</button></a>
+  <a href='#paintingScore-1'><button class="score-button">Score</button></a>
+</nav>
+<div class="category-list">`
+
+let innerListArtist = ` <div class="container-category">
+<nav class = "category-nav">
+  <a href=''><button class="main-button">Home</button></a>
+  <a href='#artistScore-1'><button class="score-button">Score</button></a>
 </nav>
 <div class="category-list">`
 
@@ -14,10 +21,10 @@ async function insertPaintingCategories(){
     try{
         const paintingList = await createPaintingsList();
                 categoryList.innerHTML = paintingList;
-                innerList = ` <div class="container-category">
+                innerListPainting = ` <div class="container-category">
                 <nav class = "category-nav">
                   <a href=''><button class="main-button">Home</button></a>
-                  <a href='#score'><button class="score-button">Score</button></a>
+                  <a href='#paintingScore-1'><button class="score-button">Score</button></a>
                 </nav>
                 <div class="category-list">`
                 insertPaintingScore();
@@ -31,10 +38,10 @@ async function insertArtistCategories(){
     try{
         const artistList = await createArtistsList();
                 categoryList.innerHTML = artistList;
-                innerList = ` <div class="container-category">
+                innerListArtist = ` <div class="container-category">
                 <nav class = "category-nav">
                   <a href=''><button class="main-button">Home</button></a>
-                  <a href='#score'><button class="score-button">Score</button></a>
+                  <a href='#artistScore-1'><button class="score-button">Score</button></a>
                 </nav>
                 <div class="category-list">`
                 insertArtistsScore();
@@ -48,7 +55,7 @@ async function insertArtistCategories(){
 async function createPaintingsList(){
     try{
           for (let categoryNumber in paintingCategory){
-            innerList = innerList + `<div class="category"><a href="#paintingsPack-${+categoryNumber + 1}">
+            innerListPainting = innerListPainting + `<div class="category"><a href="#paintingsPack-${+categoryNumber + 1}">
             <div class="category-title">${paintingCategory[categoryNumber].title}</div>
             <img src="${paintingCategory[categoryNumber].source}" alt="first-picture" width="220" height="220">
             </a>
@@ -57,9 +64,9 @@ async function createPaintingsList(){
             </a></div>
             `
           }
-          innerList = innerList + ` </div>
+          innerListPainting = innerListPainting + ` </div>
           </div>`
-        return innerList;
+        return innerListPainting;
 
     } catch(err){
         throw err
@@ -70,7 +77,7 @@ async function createPaintingsList(){
 async function createArtistsList(){
     try{
           for (let artistNumber in artistCategory){
-            innerList = innerList + `<div class="category"><a href="#artistsPack-${+artistNumber + 1}">
+            innerListArtist = innerListArtist+ `<div class="category"><a href="#artistsPack-${+artistNumber + 1}">
             <div class="category-title">${artistCategory[artistNumber].title}</div>
             <img src="${artistCategory[artistNumber].source}" alt="first-picture" width="220" height="220">
             </a>
@@ -79,9 +86,9 @@ async function createArtistsList(){
             </a>
             </div>`
           }
-          innerList = innerList + ` </div>
+          innerListArtist = innerListArtist + ` </div>
           </div>`
-        return innerList;
+        return innerListArtist;
 
     } catch(err){
         throw err

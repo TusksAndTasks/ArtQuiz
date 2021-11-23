@@ -66,7 +66,6 @@ function showPopUp(number, secondNumber, result){
     nextButton.addEventListener('click', function(){changeQuizView(number)});
     insertResults(secondNumber, result);
     popup.classList.add('active');
-
 }
 
 function hidePopUp(){
@@ -167,19 +166,17 @@ let clickNumber = 0;
 function secondTracker(number){
     if(clickNumber <= 10){
     clickNumber++
-    console.log(clickNumber)
     } else{
         clickNumber = 0;
     }
     let currentNumber = number + clickNumber;
-    console.log(currentNumber)
     return currentNumber;
 }
 
 
 function trackerInit(number){
     if(number > 0){
-        const numberOfAuthor = (110 + (number * 10)) - 1;
+        const numberOfAuthor = 110 + (number * 10);
         return numberOfAuthor;
     }
     return 0;

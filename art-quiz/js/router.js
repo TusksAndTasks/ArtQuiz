@@ -1,7 +1,9 @@
 import category from "./category.js";
 import { QuizConstructor } from "./painting-question.js";
+import { ArtistQuizConstructor } from "./artist-question.js";
 const categoryLayout = new category();
 const quizConstructor = new QuizConstructor();
+const artistQuizConstructor = new ArtistQuizConstructor();
 
 function isQuizView(num){
   const categoryNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
@@ -147,7 +149,71 @@ function switchView(location, number) {
           </section>
           `
           quizConstructor.createQuestion(number);
-          break        
+          break    
+        case 'artistsPack': 
+        header.innerHTML = `
+        <nav class = "quiz-header">
+        <a href=''>
+        <div class="main-button">Home</div>
+        </a>
+        <a href='#paintings'>
+        <div class="category-button">Categories</div>
+        </a>
+        </nav>
+        `
+        main.innerHTML = `
+        <div class="question-container">
+        <div class="question">
+        Кто автор этой картины?
+        </div>
+        <div class="authors-painting"></div>
+        <div class="author-answer-box">
+        <div class="author-answer"></div>
+        <div class="author-answer"></div>
+        <div class="author-answer"></div>
+        <div class="author-answer"></div>
+        </div>
+        </div>
+        <div class="bullet-container">
+        <div class="bullet"></div>
+        <div class="bullet"></div>
+        <div class="bullet"></div>
+        <div class="bullet"></div>
+        <div class="bullet"></div>
+        <div class="bullet"></div>
+        <div class="bullet"></div>
+        <div class="bullet"></div>
+        <div class="bullet"></div>
+        <div class="bullet"></div>
+      </div>
+        <section class="popup-screen">
+        <div class="popup-container">
+        <div class="result"></div>
+        <div class='right-picture'></div>
+        <p class="picture-name"></p>
+        <p class="picture-author"></p>
+        <p class="picture-year"></p>
+        <button class="next-question">continue</button>
+        </div>
+        </section>
+        <section class="popup-score">
+        <div class="popup-container">
+        <div class="congrats">Congratulations!</div>
+        <div class="score"><span></span>/10</div>
+        <div class="score-picture"></div>
+        <div class="result-nav">
+        <a href=''>
+        <div class="main-button">Home</div>
+        </a>
+        <a href='#artists'>
+        <div class="category-button">Continue</div>
+        </a>
+        </div>
+        </div>
+        </section>
+        `
+        artistQuizConstructor.createQuestion(number);
+        break;
     }
 
 }

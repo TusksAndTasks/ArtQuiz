@@ -339,10 +339,46 @@ button{
     justify-content: space-around;
     width: 220px;
     height: 60px;
-    background-color: #587b76;;
+    background-color: #587b76;
     margin-top: -5px ;
     color: white;
     font-family: Montserrat;
     font-size: 28px;
     border-radius: 0 0 35px 0;
+}
+
+.non-answered{
+  filter: grayscale(100%);
+}
+
+.authors-painting{
+    width: 50%;
+    height: 50vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: 25%;
+    margin-top: 10px;
+}
+
+.author-answer-box{
+    width: 50%;
+    height: 24vh;
+    margin-left: 25%;
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: 10px;
+}
+
+.author-answer{
+    width: 50%;
+    height: 12vh;
+    background-color: #587b76;
+    border: solid 1px black;
+    box-sizing: border-box;
+    color: white;
+    font-family: Montserrat;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

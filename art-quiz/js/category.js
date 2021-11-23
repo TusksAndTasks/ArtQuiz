@@ -20,7 +20,8 @@ async function insertPaintingCategories(){
                   <a href='#score'><button class="score-button">Score</button></a>
                 </nav>
                 <div class="category-list">`
-                insertPaintingScore()
+                insertPaintingScore();
+                changeUnansweredPics();
 } catch (err) {
     throw err
 }
@@ -36,6 +37,8 @@ async function insertArtistCategories(){
                   <a href='#score'><button class="score-button">Score</button></a>
                 </nav>
                 <div class="category-list">`
+                insertArtistsScore();
+                changeUnansweredPics();
 } catch (err) {
     throw err
 }
@@ -53,10 +56,6 @@ async function createPaintingsList(){
             <div class="category-score">Score <span class="current-score"></span> </div>
             </a></div>
             `
-
-           // if(localStorage.getItem(`pictures-${+categoryNumber + 1}`)){
-              //insertPaintingScore(+categoryNumber)
-            //}
           }
           innerList = innerList + ` </div>
           </div>`
@@ -71,10 +70,14 @@ async function createPaintingsList(){
 async function createArtistsList(){
     try{
           for (let artistNumber in artistCategory){
-            innerList = innerList + `<a href="#artistsPack-${+artistNumber + 1}"><div class="category">
+            innerList = innerList + `<div class="category"><a href="#artistsPack-${+artistNumber + 1}">
             <div class="category-title">${artistCategory[artistNumber].title}</div>
             <img src="${artistCategory[artistNumber].source}" alt="first-picture" width="220" height="220">
-            </div></a>`
+            </a>
+            <a href="#artistScore-${+artistNumber + 1}">
+            <div class="category-score">Score <span class="current-score"></span> </div>
+            </a>
+            </div>`
           }
           innerList = innerList + ` </div>
           </div>`
@@ -85,6 +88,15 @@ async function createArtistsList(){
     }
 }
 
+function insertArtistsScore(){
+  for(let i = 0; i <= 11; i++){
+    if(localStorage.getItem(`artists-${i + 1}`)){
+  document.querySelectorAll('.current-score')[i].textContent = localStorage.getItem(`artists-${i + 1}`)
+    }
+  }
+}
+
+
 function insertPaintingScore(){
     for(let i = 0; i <= 11; i++){
       if(localStorage.getItem(`pictures-${i + 1}`)){
@@ -92,6 +104,14 @@ function insertPaintingScore(){
       }
     }
   }
+
+function changeUnansweredPics(){
+  for(let i = 0; i <= 11; i++){
+    if(document.querySelectorAll('.current-score')[i].textContent === ''){
+      document.querySelectorAll('.category img')[i].classList.add('non-answered');
+    }
+  }
+}  
 
 export default class {
     constructor(){

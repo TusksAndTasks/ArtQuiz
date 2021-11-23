@@ -5,46 +5,46 @@ export const artistCategory = [
     },
     {
         title: 'second pack',
-        source: 'img/9.jpg'
+        source: 'img/10.jpg'
     },
     {
         title: 'third pack',
-        source: 'img/19.jpg'
+        source: 'img/20.jpg'
     },
     {
         title: 'forth pack',
-        source: 'img/29.jpg'
+        source: 'img/30.jpg'
     },
     {
         title: 'fifth pack',
-        source: 'img/39.jpg'
+        source: 'img/40.jpg'
     },
     {
         title: 'sixth pack',
-        source: 'img/49.jpg'
+        source: 'img/50.jpg'
     },
     {
         title: 'seventh pack',
-        source: 'img/59.jpg'
+        source: 'img/60.jpg'
     },
     {
         title: 'eighth pack',
-        source: 'img/69.jpg'
+        source: 'img/70.jpg'
     },
     {
         title: 'ninth pack',
-        source: 'img/79.jpg'
+        source: 'img/80.jpg'
     },
     {
         title: 'tenth pack',
-        source: 'img/89.jpg'
+        source: 'img/90.jpg'
     },
     {
         title: 'eleventh pack',
-        source: 'img/99.jpg'
+        source: 'img/100.jpg'
     },
     {
         title: 'twelve pack',
-        source: 'img/109.jpg'
+        source: 'img/110.jpg'
     },
 ]

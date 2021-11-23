@@ -1,50 +1,50 @@
 export const paintingCategory = [
     {
         title: 'first pack',
-        source: 'img/119.jpg'
+        source: 'img/120.jpg'
     },
     {
         title: 'second pack',
-        source: 'img/129.jpg'
+        source: 'img/130.jpg'
     },
     {
         title: 'third pack',
-        source: 'img/139.jpg'
+        source: 'img/140.jpg'
     },
     {
         title: 'forth pack',
-        source: 'img/149.jpg'
+        source: 'img/150.jpg'
     },
     {
         title: 'fifth pack',
-        source: 'img/159.jpg'
+        source: 'img/160.jpg'
     },
     {
         title: 'sixth pack',
-        source: 'img/169.jpg'
+        source: 'img/170.jpg'
     },
     {
         title: 'seventh pack',
-        source: 'img/179.jpg'
+        source: 'img/180.jpg'
     },
     {
         title: 'eighth pack',
-        source: 'img/189.jpg'
+        source: 'img/190.jpg'
     },
     {
         title: 'ninth pack',
-        source: 'img/199.jpg'
+        source: 'img/200.jpg'
     },
     {
         title: 'tenth pack',
-        source: 'img/209.jpg'
+        source: 'img/210.jpg'
     },
     {
         title: 'eleventh pack',
-        source: 'img/219.jpg'
+        source: 'img/220.jpg'
     },
     {
         title: 'twelve pack',
-        source: 'img/229.jpg'
+        source: 'img/230.jpg'
     },
 ]
